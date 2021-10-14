@@ -6,5 +6,7 @@ HOST, PORT = "127.0.0.1", 3080
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((HOST, PORT))
 while(True):
-    response = input(client.recv(100).decode("utf-8")).encode("utf-8")
+    response = input(client.recv(1000).decode("utf-8")).encode("utf-8")
     client.send(response)
+    answer = client.recv(1000).decode("utf-8")
+    print(answer)

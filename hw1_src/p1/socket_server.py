@@ -33,11 +33,14 @@ while(True):
                 response = client.recv(1000).decode("utf-8")
                 print(response)
                 answer = eval(response)
+                answer = str(answer)
+                res = "Receive server message:\n" + \
+                    "The answer is %s\n" % answer+"Do you have any question?"
                 client.send(
-                    b"Receive server message:"
+                    res.encode("utf-8")
                 )
                 # need to change answer to byte
-                # client.send(answer)
+                # client.send(bytes(answer))
                 print(answer)
                 # TODO end
         except socket.error:
