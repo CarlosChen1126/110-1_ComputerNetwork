@@ -8,5 +8,5 @@ client.connect((HOST, PORT))
 while(True):
     response = input(client.recv(1000).decode("utf-8")).encode("utf-8")
     client.send(response)
-    answer = client.recv(1000).decode("utf-8")
-    print(answer)
+    response2 = input(client.recv(1000).decode("utf-8")).encode("utf-8")
+    client.send(response2)
