@@ -24,4 +24,3 @@ for o in operator.keys():
         elif(c == '/'):
             print(l/r)
         elif(c == '^'):
-            print(l**r)
