@@ -52,17 +52,18 @@ while True:
             connectionSocket.send(outputdata[i].encode("utf-8"))
         connectionSocket.send("\r\n".encode("utf-8"))
 
-        # connectionSocket.close()
+        connectionSocket.close()
     except IOError:
         # Send response message for file not found
         # TODO start
-
+        res_f = "HTTP/1.1 404 Not Found\r\n" +\
+            "Content-Type: text/html; charset=UTF-8\r\n\r\n"
         # TODO end
 
         # Close client socket
         # TODO start
-
+        connectionSocket.close()
         # TODO end
         print("----------------------------------------------")
-        # serverSocket.close()
-        # sys.exit()  # Terminate the program after sending the corresponding data
+serverSocket.close()
+sys.exit()  # Terminate the program after sending the corresponding data
