@@ -8,7 +8,7 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 # TODO start
 HOST, PORT = "127.0.0.1", 3080
 serverSocket.bind((HOST, PORT))
-serverSocket.listen(1)
+serverSocket.listen(10)
 # TODO in end
 while True:
     # Establish the connection
@@ -32,6 +32,7 @@ while True:
         # TODO start
         outputdata = f.read()
         # TODO end
+        print("outputdata:")
         print(outputdata)
 
         # Send one HTTP header line into socket
@@ -39,12 +40,9 @@ while True:
         res = "HTTP/1.1 200 OK\r\n" +\
             "Content-Type: text/html; charset=UTF-8\r\n\r\n"
         connectionSocket.send(res.encode())
-        #connectionSocket.send(b"HTTP/1.1 OK\r\n\r\n")
+        print(len(res))
         # send HTTP status to client
-        #connectionSocket.send(b"Status: 200\r\n\r\n")
         # send content type to client
-        # connectionSocket.send(
-        #    b"Content-Type: text/html; charset=UTF-8\r\n\r\n")
         # TODO end
 
         # Send the content of the requested file to the client
@@ -58,6 +56,7 @@ while True:
         # TODO start
         res_f = "HTTP/1.1 404 Not Found\r\n" +\
             "Content-Type: text/html; charset=UTF-8\r\n\r\n"
+        connectionSocket.send(res_f.encode())
         # TODO end
 
         # Close client socket
