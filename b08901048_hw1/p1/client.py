@@ -1,7 +1,7 @@
 import socket
 
 ClientMessage = "hello"
-HOST, PORT = "127.0.0.1", 3080
+HOST, PORT = "127.0.0.1", 8888
 #HOST, PORT = "140.112.42.108", 7777
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((HOST, PORT))

@@ -11,7 +11,7 @@ tcpSerSock = socket(AF_INET, SOCK_STREAM)
 # TODO start.
 HOST, PORT = sys.argv[1], 7777
 tcpSerSock.bind((HOST, PORT))
-tcpSerSock.listen(1)
+tcpSerSock.listen(10)
 # TODO end.
 while 1:
     # Strat receiving data from the client
@@ -54,7 +54,7 @@ while 1:
             # Create a socket on the proxyserver
             # TODO start
             sock = socket(AF_INET, SOCK_STREAM)
-            HOSTW, PORTW = "127.0.0.1", 888
+            HOSTW, PORTW = "127.0.0.1", 8888
             # TODO end
             hostn = filename.replace("www.", "", 1)
             try:
