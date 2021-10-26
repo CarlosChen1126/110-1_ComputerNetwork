@@ -6,7 +6,7 @@ import sys  # In order to terminate the program
 serverSocket = socket(AF_INET, SOCK_STREAM)
 # Prepare a server socket
 # TODO start
-HOST, PORT = "127.0.0.1", 3080
+HOST, PORT = "127.0.0.1", 8888
 serverSocket.bind((HOST, PORT))
 serverSocket.listen(10)
 # TODO in end
@@ -37,8 +37,7 @@ while True:
 
         # Send one HTTP header line into socket
         # TODO start
-        res = "HTTP/1.1 200 OK\r\n" +\
-            "Content-Type: text/html; charset=UTF-8\r\n\r\n"
+        res = "HTTP/1.1 200 OK\r\n\r\n"
         connectionSocket.send(res.encode())
         print(len(res))
         # send HTTP status to client
@@ -54,8 +53,7 @@ while True:
     except IOError:
         # Send response message for file not found
         # TODO start
-        res_f = "HTTP/1.1 404 Not Found\r\n" +\
-            "Content-Type: text/html; charset=UTF-8\r\n\r\n"
+        res_f = "HTTP/1.1 404 Not found\r\n\r\n"
         connectionSocket.send(res_f.encode())
         # TODO end
 

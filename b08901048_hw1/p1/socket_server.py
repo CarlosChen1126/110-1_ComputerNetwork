@@ -4,7 +4,7 @@ import socket
 # (use "127.0.0.1" for localhost on local machine)
 # Create a socket and bind the socket to the addr
 # TODO start
-HOST, PORT = "127.0.0.1", 3080
+HOST, PORT = "127.0.0.1", 8888
 operator = {
     '+': "addition",
     '-': "subtraction",
@@ -14,6 +14,7 @@ operator = {
     '%': "mode",
     '#': "quotient",
     '!': "factorial",
+    '~': "percentage",
 
 }
 # TODO end
@@ -46,15 +47,19 @@ def calculator(e):
                 for i in range(l + 1):
                     if(i != 0):
                         ans = ans*i
+                print(ans)
                 return ans
+            elif(c == '~'):
+                l = l*100
+                return str(l)+"%"
 
 
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((HOST, PORT))
+server.listen(1)
 while(True):
     # Listen for any request
     # TODO start
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind((HOST, PORT))
-    server.listen(1)
     # TODO end
     print("The Grading server for HW1 is running..")
 
@@ -75,6 +80,7 @@ while(True):
                 end = False
                 while(end == False):
                     response = client.recv(1000).decode("utf-8")
+                    print("response")
                     print(response)
                     answer = calculator(response)
                     answer = str(answer)
@@ -91,7 +97,8 @@ while(True):
                         end = True
                         client.send(b"Bye Bye\n")
                         break
-                    elif(res == "y" or res2 == "Y"):
+                    elif(res2 == "y" or res2 == "Y"):
+                        end = False
                         break
                     else:
                         client.send(b"Wrong response\n")
