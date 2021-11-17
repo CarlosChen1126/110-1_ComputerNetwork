@@ -1,0 +1,296 @@
+-----  Stop and Wait Network Simulator Version 1.1 -------- 
+
+the number of messages to simulate: 20
+packet loss probability: 0.100000
+packet corruption probability: 0.000000
+average time between messages from sender's layer5: 10.000000
+TRACE: 2
+
+EVENT time: 18.705740,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (aaaaaaaaaaaaaaaaaaa)
+	MESSAGE: A    send (seq: 1 ack: 0)
+
+EVENT time: 24.170835,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 1 ack: 0)
+	MESSAGE: B input (aaaaaaaaaaaaaaaaaaa)
+B.e========================= 1
+A send seq================== 1
+	MESSAGE: B    send (seq: 0 ack: 1)
+
+EVENT time: 29.402449,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 1)
+
+EVENT time: 35.124840,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (bbbbbbbbbbbbbbbbbbb)
+	MESSAGE: A    send (seq: 2 ack: 0)
+
+EVENT time: 37.145336,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 2 ack: 0)
+	MESSAGE: B input (bbbbbbbbbbbbbbbbbbb)
+B.e========================= 2
+A send seq================== 2
+	MESSAGE: B    send (seq: 0 ack: 2)
+
+EVENT time: 41.612602,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 2)
+
+EVENT time: 52.094032,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (ccccccccccccccccccc)
+	MESSAGE: A    send (seq: 3 ack: 0)
+0.100000          TOLAYER3: packet being lost
+
+EVENT time: 60.917324,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (ddddddddddddddddddd)
+	MESSAGE: A    send (seq: 4 ack: 0)
+
+EVENT time: 66.189552,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 4 ack: 0)
+	MESSAGE: B input (ddddddddddddddddddd)
+B.e========================= 3
+A send seq================== 4
+	MESSAGE: B    send (seq: 0 ack: 2)
+
+EVENT time: 69.502670,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (eeeeeeeeeeeeeeeeeee)
+	MESSAGE: A    send (seq: 5 ack: 0)
+
+EVENT time: 70.392197,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 2)
+
+EVENT time: 77.157211,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 5 ack: 0)
+	MESSAGE: B input (eeeeeeeeeeeeeeeeeee)
+B.e========================= 3
+A send seq================== 5
+	MESSAGE: B    send (seq: 0 ack: 2)
+
+EVENT time: 80.570114,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 2)
+
+EVENT time: 87.321922,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (fffffffffffffffffff)
+	MESSAGE: A    send (seq: 6 ack: 0)
+0.100000          TOLAYER3: packet being lost
+
+EVENT time: 89.063972,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (ggggggggggggggggggg)
+	MESSAGE: A    send (seq: 7 ack: 0)
+
+EVENT time: 93.222557,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 7 ack: 0)
+	MESSAGE: B input (ggggggggggggggggggg)
+B.e========================= 3
+A send seq================== 7
+	MESSAGE: B    send (seq: 0 ack: 2)
+0.100000          TOLAYER3: packet being lost
+
+EVENT time: 108.701042,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (hhhhhhhhhhhhhhhhhhh)
+	MESSAGE: A    send (seq: 8 ack: 0)
+
+EVENT time: 111.331696,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 8 ack: 0)
+	MESSAGE: B input (hhhhhhhhhhhhhhhhhhh)
+B.e========================= 3
+A send seq================== 8
+	MESSAGE: B    send (seq: 0 ack: 2)
+
+EVENT time: 113.206886,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 2)
+
+EVENT time: 118.345947,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (iiiiiiiiiiiiiiiiiii)
+	MESSAGE: A    send (seq: 9 ack: 0)
+
+EVENT time: 118.475868,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (jjjjjjjjjjjjjjjjjjj)
+	MESSAGE: A    send (seq:10 ack: 0)
+
+EVENT time: 119.652336,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 9 ack: 0)
+	MESSAGE: B input (iiiiiiiiiiiiiiiiiii)
+B.e========================= 3
+A send seq================== 9
+	MESSAGE: B    send (seq: 0 ack: 2)
+
+EVENT time: 120.872620,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq:10 ack: 0)
+	MESSAGE: B input (jjjjjjjjjjjjjjjjjjj)
+B.e========================= 3
+A send seq================== 10
+	MESSAGE: B    send (seq: 0 ack: 2)
+0.100000          TOLAYER3: packet being lost
+
+EVENT time: 125.902267,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 2)
+
+EVENT time: 127.973869,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (kkkkkkkkkkkkkkkkkkk)
+
+EVENT time: 134.428268,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (lllllllllllllllllll)
+
+EVENT time: 142.915558,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (mmmmmmmmmmmmmmmmmmm)
+
+EVENT time: 147.088531,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (nnnnnnnnnnnnnnnnnnn)
+
+EVENT time: 158.904938,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (ooooooooooooooooooo)
+
+EVENT time: 165.902267,  type: 0, timerinterrupt   entity: 0
+	MESSAGE: A timeout (index: 0)
+----------------------
+============== 3	MESSAGE: A    send (seq: 3 ack: 0)
+----------------------
+============== 3	MESSAGE: A    send (seq: 4 ack: 0)
+----------------------
+============== 3	MESSAGE: A    send (seq: 5 ack: 0)
+----------------------
+============== 3	MESSAGE: A    send (seq: 6 ack: 0)
+----------------------
+============== 3	MESSAGE: A    send (seq: 7 ack: 0)
+----------------------
+============== 3	MESSAGE: A    send (seq: 8 ack: 0)
+----------------------
+============== 3	MESSAGE: A    send (seq: 9 ack:1122808096)
+----------------------
+============== 3	MESSAGE: A    send (seq:10 ack: 0)
+
+EVENT time: 173.021149,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 3 ack: 0)
+	MESSAGE: B input (ccccccccccccccccccc)
+B.e========================= 3
+A send seq================== 3
+	MESSAGE: B    send (seq: 0 ack: 3)
+
+EVENT time: 174.298615,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 4 ack: 0)
+	MESSAGE: B input (ddddddddddddddddddd)
+B.e========================= 4
+A send seq================== 4
+	MESSAGE: B    send (seq: 0 ack: 4)
+
+EVENT time: 177.562897,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (ppppppppppppppppppp)
+
+EVENT time: 179.005249,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 3)
+
+EVENT time: 179.916290,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 5 ack: 0)
+	MESSAGE: B input (eeeeeeeeeeeeeeeeeee)
+B.e========================= 5
+A send seq================== 5
+	MESSAGE: B    send (seq: 0 ack: 5)
+0.100000          TOLAYER3: packet being lost
+
+EVENT time: 181.894669,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 6 ack: 0)
+	MESSAGE: B input (fffffffffffffffffff)
+B.e========================= 6
+A send seq================== 6
+	MESSAGE: B    send (seq: 0 ack: 6)
+
+EVENT time: 183.701004,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 7 ack: 0)
+	MESSAGE: B input (ggggggggggggggggggg)
+B.e========================= 7
+A send seq================== 7
+	MESSAGE: B    send (seq: 0 ack: 7)
+
+EVENT time: 185.813736,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq: 8 ack: 0)
+	MESSAGE: B input (hhhhhhhhhhhhhhhhhhh)
+B.e========================= 8
+A send seq================== 8
+	MESSAGE: B    send (seq: 0 ack: 8)
+
+EVENT time: 186.867188,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 4)
+
+EVENT time: 192.505081,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive a corrupted packet!
+	MESSAGE: B input (iiiiiiiiiiiiiiiiiii)
+B.e========================= 9
+A send seq================== 9
+	MESSAGE: B    send (seq: 0 ack: 9)
+
+EVENT time: 194.729782,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (qqqqqqqqqqqqqqqqqqq)
+	MESSAGE: A    send (seq:11 ack: 0)
+
+EVENT time: 194.825043,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 6)
+
+EVENT time: 197.977692,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq:10 ack: 0)
+	MESSAGE: B input (jjjjjjjjjjjjjjjjjjj)
+B.e========================= 10
+A send seq================== 10
+	MESSAGE: B    send (seq: 0 ack:10)
+
+EVENT time: 199.217499,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 7)
+
+EVENT time: 204.736343,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (rrrrrrrrrrrrrrrrrrr)
+	MESSAGE: A    send (seq:12 ack: 0)
+
+EVENT time: 204.882523,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 8)
+
+EVENT time: 207.465866,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq:11 ack: 0)
+	MESSAGE: B input (qqqqqqqqqqqqqqqqqqq)
+B.e========================= 11
+A send seq================== 11
+	MESSAGE: B    send (seq: 0 ack:11)
+0.100000          TOLAYER3: packet being lost
+
+EVENT time: 211.579376,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack: 9)
+
+EVENT time: 214.084595,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack:10)
+
+EVENT time: 215.245499,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq:12 ack: 0)
+	MESSAGE: B input (rrrrrrrrrrrrrrrrrrr)
+B.e========================= 12
+A send seq================== 12
+	MESSAGE: B    send (seq: 0 ack:12)
+
+EVENT time: 221.146454,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack:12)
+
+EVENT time: 222.584625,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (sssssssssssssssssss)
+	MESSAGE: A    send (seq:13 ack: 0)
+
+EVENT time: 223.975006,  type: 1, fromlayer5  entity: 0
+	MESSAGE: A output (ttttttttttttttttttt)
+	MESSAGE: A    send (seq:14 ack: 0)
+
+EVENT time: 231.407745,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq:13 ack: 0)
+	MESSAGE: B input (sssssssssssssssssss)
+B.e========================= 13
+A send seq================== 13
+	MESSAGE: B    send (seq: 0 ack:13)
+
+EVENT time: 232.581192,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack:13)
+
+EVENT time: 238.188721,  type: 2, fromlayer3  entity: 1
+	MESSAGE: B receive (seq:14 ack: 0)
+	MESSAGE: B input (ttttttttttttttttttt)
+B.e========================= 14
+A send seq================== 14
+	MESSAGE: B    send (seq: 0 ack:14)
+
+EVENT time: 244.027191,  type: 2, fromlayer3  entity: 0
+	MESSAGE: A receive (seq: 0 ack:14)
+ Simulator terminated at time 244.027191
+ after sending 20 msgs from layer5

@@ -15,7 +15,7 @@
    - packets will be delivered in the order in which they were sent
        (although some can be lost).
 **********************************************************************/
-
+float time = 0.000;
 #define BIDIRECTIONAL 0 /* change to 1 if you're doing extra credit */
                         /* and write a routine called B_output */
 
@@ -54,13 +54,18 @@ struct Sender
     int nextseqnum;
     int slidingwindowsize;
     struct pkt sndpkt[8];
+    float sampleRTT[1000];
+    float EstimatedRTT;
 } A;
 
 struct Receiver
 {
     int expectedseqnum;
 } B;
-
+float EWMA(float a, float SRTT, float ERTT)
+{
+    return (1 - a) * ERTT + a * SRTT;
+}
 int get_checksum(struct pkt *packet)
 {
     int checksum = 0;
@@ -83,11 +88,12 @@ void A_output(struct msg message)
     if (A.nextseqnum < A.base + 8)
     {
         A.sndpkt[A.nextseqnum] = p;
+        A.sampleRTT[p.seqnum] = time;
         tolayer3(0, p, A.nextseqnum);
         if (A.base == A.nextseqnum)
         {
             //stoptimer(0, 55);
-            starttimer(0, 500, 0);
+            starttimer(0, 40, 0);
         }
         A.nextseqnum++;
     }
@@ -107,6 +113,22 @@ void A_input(struct pkt packet)
     // {
     //     message.data[i] = packet.payload[i];
     // }
+    // printf("TIME===============================\n");
+    // printf("%f\n", time);
+    // printf("ESTTIME============================\n");
+    // printf("%f\n", A.EstimatedRTT);
+    float SRTT = time - A.sampleRTT[packet.acknum];
+    if (SRTT == time)
+    {
+        SRTT = A.EstimatedRTT;
+    }
+    // else if (SRTT < A.EstimatedRTT * 0.5)
+    // {
+    //     SRTT = A.EstimatedRTT * 0.8;
+    // }
+    //printf("%f\n", A.sampleRTT[packet.acknum]);
+    //printf("%f\n", SRTT);
+    A.EstimatedRTT = EWMA(0.125, SRTT, A.EstimatedRTT);
     A.base = packet.acknum + 1;
     if (A.base == A.nextseqnum)
     {
@@ -115,7 +137,7 @@ void A_input(struct pkt packet)
     else
     {
         stoptimer(0, 0);
-        starttimer(0, 500, 0);
+        starttimer(0, 40, 0);
     }
 }
 
@@ -123,9 +145,11 @@ void A_input(struct pkt packet)
 void A_timerinterrupt(int index)
 {
     //stoptimer(0, 55);
-    starttimer(0, 500, 0);
+    starttimer(0, 40, 0);
     for (int i = A.base; i < A.nextseqnum; i++)
     {
+        printf("----------------------\n");
+        printf("============== %d", A.base);
         tolayer3(0, A.sndpkt[i], i);
     }
 }
@@ -137,6 +161,11 @@ void A_init(void)
     A.slidingwindowsize = 8;
     A.base = 1;
     A.nextseqnum = 1;
+    A.EstimatedRTT = 15;
+    for (int i = 0; i < 1000; i++)
+    {
+        A.sampleRTT[i] = 15;
+    }
 }
 
 /* Note that with simplex transfer from a-to-B, there is no B_output() */
@@ -151,11 +180,23 @@ void B_input(struct pkt packet)
     }
     tolayer5(1, message);
     struct pkt p;
-    p.acknum = packet.seqnum;
+    if (packet.seqnum == B.expectedseqnum)
+    {
+        printf("B.e========================= %d\n", B.expectedseqnum);
+        printf("A send seq================== %d\n", packet.seqnum);
+        p.acknum = packet.seqnum;
+        B.expectedseqnum++;
+    }
+    else
+    {
+        printf("B.e========================= %d\n", B.expectedseqnum);
+        printf("A send seq================== %d\n", packet.seqnum);
+
+        p.acknum = B.expectedseqnum - 1;
+    }
     p.seqnum = 0;
     p.checksum = get_checksum(&p);
     tolayer3(1, p, B.expectedseqnum);
-    B.expectedseqnum++;
 }
 
 /* called when B's timer goes off */
@@ -211,7 +252,7 @@ struct event *evlist = NULL; /* the event list */
 int TRACE = 1;   /* for my debugging */
 int nsim = 0;    /* number of messages from 5 to 4 so far */
 int nsimmax = 0; /* number of msgs to generate, then stop */
-float time = 0.000;
+// float time = 0.000;
 float lossprob;    /* probability that a packet is dropped  */
 float corruptprob; /* probability that one bit is packet is flipped */
 float lambda;      /* arrival rate of messages from layer 5 */
