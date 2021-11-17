@@ -113,21 +113,25 @@ void A_input(struct pkt packet)
     // {
     //     message.data[i] = packet.payload[i];
     // }
-    // printf("TIME===============================\n");
-    // printf("%f\n", time);
-    // printf("ESTTIME============================\n");
-    // printf("%f\n", A.EstimatedRTT);
-    float SRTT = time - A.sampleRTT[packet.acknum];
-    if (SRTT == time)
-    {
-        SRTT = A.EstimatedRTT;
-    }
+    printf("TIME===============================\n");
+    printf("%f\n", time);
+    printf("ESTTIME============================\n");
+    printf("%f\n", A.EstimatedRTT);
+    float SRTT = time - A.sampleRTT[packet.seqnum];
+    // if (SRTT == time)
+    // {
+    //     SRTT = A.EstimatedRTT;
+    // }
     // else if (SRTT < A.EstimatedRTT * 0.5)
     // {
     //     SRTT = A.EstimatedRTT * 0.8;
     // }
-    //printf("%f\n", A.sampleRTT[packet.acknum]);
-    //printf("%f\n", SRTT);
+    printf("pkt_seq:=========================\n");
+    printf("%d\n", packet.seqnum);
+    printf("sampleRTT[]:=====================\n");
+    printf("%f\n", A.sampleRTT[packet.seqnum]);
+    printf("SRTT:============================\n");
+    printf("%f\n", SRTT);
     A.EstimatedRTT = EWMA(0.125, SRTT, A.EstimatedRTT);
     A.base = packet.acknum + 1;
     if (A.base == A.nextseqnum)
@@ -194,7 +198,7 @@ void B_input(struct pkt packet)
 
         p.acknum = B.expectedseqnum - 1;
     }
-    p.seqnum = 0;
+    p.seqnum = packet.seqnum;
     p.checksum = get_checksum(&p);
     tolayer3(1, p, B.expectedseqnum);
 }
