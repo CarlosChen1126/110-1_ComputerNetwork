@@ -93,7 +93,7 @@ void A_output(struct msg message)
         if (A.base == A.nextseqnum)
         {
             //stoptimer(0, 55);
-            starttimer(0, 40, 0);
+            starttimer(0, 2*A.EstimatedRTT, 0);
         }
         A.nextseqnum++;
     }
@@ -141,7 +141,7 @@ void A_input(struct pkt packet)
     else
     {
         stoptimer(0, 0);
-        starttimer(0, 40, 0);
+        starttimer(0, 2*A.EstimatedRTT, 0);
     }
 }
 
