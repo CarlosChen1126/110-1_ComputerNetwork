@@ -60,55 +60,42 @@ def LSR(s, table, num):
     return D, P
 
 
-f = open(sys.argv[1], "r")
-input_data = []
-for line in f.readlines():
-    input_data.extend(line.split())
-f.close()
-num = input_data[0]
-num = int(num)
-table = []
+while True:
+    c = input()
+    if(c[0:2] == "lf"):
+        inputname = c[3:]
 
-for i in range(0, num+1):
-    table.append([])
-    for j in range(0, num+1):
-        table[i].append(-1)
-for i in range(1, num*num+1):
-    input_data[i] = int(input_data[i])
-    if i % num != 0:
-        table[((i-1)//num) + 1][i % num] = input_data[i]
-    else:
-        table[((i-1)//num) + 1][num] = input_data[i]
-DD = []
-PP = []
-for i in range(1, num+1):
-    D, P = LSR(i, table, num)
-    DD.append(D)
-    PP.append(P)
-print(DD)
-print(PP)
+        f = open(inputname, "r")
+        input_data = []
+        for line in f.readlines():
+            input_data.extend(line.split())
+        f.close()
+        num = input_data[0]
+        num = int(num)
+        table = []
 
-f = open(sys.argv[2], 'w')
-for i in range(0, num):
-    f.write("Routing table of router " + str(i+1)+"\n")
-    for j in range(1, num+1):
-        f.write(str(DD[i][j])+" "+str(PP[i][j])+"\n")
-f.close()
+        for i in range(0, num+1):
+            table.append([])
+            for j in range(0, num+1):
+                table[i].append(-1)
+        for i in range(1, num*num+1):
+            input_data[i] = int(input_data[i])
+            if i % num != 0:
+                table[((i-1)//num) + 1][i % num] = input_data[i]
+            else:
+                table[((i-1)//num) + 1][num] = input_data[i]
+        DD = []
+        PP = []
+        for i in range(1, num+1):
+            D, P = LSR(i, table, num)
+            DD.append(D)
+            PP.append(P)
+    elif(c[0:2] == "of"):
+        outputname = inputname.replace(".txt", "_out1.txt")
 
-# l = []
-# l.append(1)
-# D = [1, 1, 3, -1, 0]
-# w = min(i for i in D if i > 0)
-# w = D.index(w)
-# print(w)
-# if(l[w] != 1):
-#     print(w)
-# print(table[1][2])
-# for i in range(1, len(table)):
-#     for j in range(1, len(table[0])):
-#         print(table[i][j])
-
-# column
-# print(len(table))
-# row
-# print(len(table[0]))
+        f = open(outputname, 'w')
+        for i in range(0, num):
+            f.write("Routing table of router " + str(i+1)+"\n")
+            for j in range(1, num+1):
+                f.write(str(DD[i][j])+" "+str(PP[i][j])+"\n")
+        f.close()

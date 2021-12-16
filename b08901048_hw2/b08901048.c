@@ -87,7 +87,7 @@ void A_output(struct msg message)
     p.checksum = get_checksum(&p);
     if (A.nextseqnum < A.base + 8)
     {
-        A.sndpkt[A.nextseqnum] = p;
+        A.sndpkt[A.nextseqnum % 8] = p;
         A.sampleRTT[p.seqnum] = time;
         tolayer3(0, p, A.nextseqnum);
         if (A.base == A.nextseqnum)
@@ -160,7 +160,7 @@ void A_timerinterrupt(int index)
     {
         // printf("----------------------\n");
         // printf("============== %d", A.base);
-        tolayer3(0, A.sndpkt[i], i);
+        tolayer3(0, A.sndpkt[i % 8], i);
     }
 }
 
